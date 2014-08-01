@@ -21,7 +21,7 @@ Converter = React.createClass do
   convertFromCYstyle: ->
     value = it
     value .= replace /(說)\n/g, (,word)-> "#{word}：\n"
-    value .= replace /(！|？|：|。|，|!)\n+/g, (,symbol) -> symbol
+    value .= replace /(！|？|：|。|，|、|!|:)\n+/g, (,symbol) -> symbol
     value .= replace /\n\n/g, '。'
     value .= replace /\n/g, '，'
     value += '。' if !value.match /[！|？|。]$/

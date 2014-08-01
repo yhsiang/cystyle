@@ -10,7 +10,7 @@
       this.innerHTML = this.innerHTML.replace(/(說)\n/g, function(text, word) {
         return word+  '：\n';
       });
-      this.innerHTML = this.innerHTML.replace(/(！|？|：|。|，|!)\n+/g, function(text, symbol){
+      this.innerHTML = this.innerHTML.replace(/(！|？|：|。|，|、|!|:)\n+/g, function(text, symbol){
         return symbol;
       });
       this.innerHTML = this.innerHTML.replace(/\n\n/g, '。');
