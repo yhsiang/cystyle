@@ -11,6 +11,13 @@ gulp.task 'js' ->
     .pipe gulp-livescript!
     .pipe gulp.dest 'public'
 
+gulp.task 'jquery' ->
+  require! <[ gulp-uglify gulp-rename ]>
+  gulp.src 'src/*.js'
+    .pipe gulp-uglify!
+    .pipe gulp-rename 'jquery.cystyle.min.js'
+    .pipe gulp.dest 'build'
+
 gulp.task 'build' <[ html js ]>
 
 gulp.task 'dev' <[build]> ->
