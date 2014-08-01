@@ -17,4 +17,6 @@ $('...').convertToCY()
 ```
 
 3. Convert From CY style to Normal Text
+```
 $('...').convertFromCY()
+```
