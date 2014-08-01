@@ -32,7 +32,7 @@
       value = value.replace(/(說)\n/g, function(arg$, word){
         return word + "：\n";
       });
-      value = value.replace(/(！|？|：|。|，|!)\n+/g, function(arg$, symbol){
+      value = value.replace(/(！|？|：|。|，|、|!|:)\n+/g, function(arg$, symbol){
         return symbol;
       });
       value = value.replace(/\n\n/g, '。');
