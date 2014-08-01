@@ -14,11 +14,14 @@ Converter = React.createClass do
       cyValue: @convertToCYstyle value
   convertToCYstyle: ->
     value = it
+    #value .= replace /說/g, (,word) -> "#{word}："
     value .= replace /，/g, '\n'
+    value .= replace /(：)/g, (,symbol) -> "#{symbol}\n\n"
     value .= replace /[。|！|？]/g, '\n\n'
   convertFromCYstyle: ->
     value = it
-    value .= replace /(！|？)\n+/g, (,symbol) -> symbol
+    value .= replace /(說)\n/g, (,word)-> "#{word}：\n"
+    value .= replace /(！|？|：|。|，|!)\n+/g, (,symbol) -> symbol
     value .= replace /\n\n/g, '。'
     value .= replace /\n/g, '，'
     value += '。' if !value.match /[！|？|。]$/
