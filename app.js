@@ -21,12 +21,18 @@
       var value;
       value = it;
       value = value.replace(/，/g, '\n');
+      value = value.replace(/(：)/g, function(arg$, symbol){
+        return symbol + "\n\n";
+      });
       return value = value.replace(/[。|！|？]/g, '\n\n');
     },
     convertFromCYstyle: function(it){
       var value;
       value = it;
-      value = value.replace(/(！|？)\n+/g, function(arg$, symbol){
+      value = value.replace(/(說)\n/g, function(arg$, word){
+        return word + "：\n";
+      });
+      value = value.replace(/(！|？|：|。|，|!)\n+/g, function(arg$, symbol){
         return symbol;
       });
       value = value.replace(/\n\n/g, '。');
