@@ -1,8 +1,9 @@
 { div, textarea, h1, h3, button } = React.DOM
 
+
 Header = React.createClass do
   displayName: 'Header',
-  render: -> h1 {}, '正元體轉換器'
+  render: -> h1 {}, '正元體產生器'
 
 Converter = React.createClass do
   displayName: 'Content'
@@ -14,13 +15,14 @@ Converter = React.createClass do
   convertToCYstyle: ->
     value = it
     value .= replace /，/g, '\n'
-    value .= replace /。/g, '\n\n'
+    value .= replace /[。|！|？]/g, '\n\n'
   convertFromCYstyle: ->
     value = it
-    value .= replace /(！|？)\n\n/g, (,symbol) -> symbol
+    value .= replace /(！|？)\n+/g, (,symbol) -> symbol
     value .= replace /\n\n/g, '。'
     value .= replace /\n/g, '，'
-    value += '。'
+    value += '。' if !value.match /[！|？|。]$/
+    value
   handleChange: (event) ->
     normal = document.getElementById 'normalStyle'
     cy = document.getElementById 'cyStyle'
