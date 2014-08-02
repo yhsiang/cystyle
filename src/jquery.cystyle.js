@@ -3,6 +3,10 @@
     return this.each(function() {
       this.innerHTML = this.innerHTML.replace(/，/g, '\n');
       this.innerHTML = this.innerHTML.replace(/[。|！|？]/g, '\n\n');
+      if(this.tagName === 'TEXTAREA') {
+        this.value = this.value.replace(/，/g, '\n');
+        this.value = this.value.replace(/[。|！|？]/g, '\n\n');
+      }
     });
   };
   $.fn.convertFromCY = function() {

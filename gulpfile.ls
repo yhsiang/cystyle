@@ -10,7 +10,8 @@ gulp.task 'js' ->
   gulp.src 'src/*.ls'
     .pipe gulp-livescript!
     .pipe gulp.dest 'public'
-
+  gulp.src 'src/*.js'
+    .pipe gulp.dest 'public'
 gulp.task 'jquery' ->
   require! <[ gulp-uglify gulp-rename ]>
   gulp.src 'src/*.js'
